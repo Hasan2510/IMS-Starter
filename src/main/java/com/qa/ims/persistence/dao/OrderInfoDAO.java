@@ -84,3 +84,18 @@ public class OrderInfoDAO implements Dao<OrderInfo> {
 		}
 		return null;
 	}
+	@Override
+	public OrderInfo read(Long oid) {
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				PreparedStatement statement = connection.prepareStatement("SELECT * FROM orderinfo WHERE orderinfoID = ?");) {
+			statement.setLong(1, oid);
+			try (ResultSet resultSet = statement.executeQuery();) {
+				resultSet.next();
+				return modelFromResultSet(resultSet);
+			}
+		} catch (Exception e) {
+			LOGGER.debug(e);
+			LOGGER.error(e.getMessage());
+		}
+		return null;
+	}
