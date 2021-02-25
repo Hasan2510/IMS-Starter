@@ -125,3 +125,41 @@ public class OrderInfoDAO implements Dao<OrderInfo> {
 		}
 		return null;
 	}
+	
+
+	/**
+	 * Deletes a item in the database
+	 * 
+	 * @param id - id of the item
+	 */
+	@Override
+	public int delete(long oi) {
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				PreparedStatement statement = connection.prepareStatement("DELETE FROM orderinfo WHERE orderinfoID = ?");) {
+			statement.setLong(1, oi);
+			return statement.executeUpdate();
+		} catch (Exception e) {
+			LOGGER.debug(e);
+			LOGGER.error(e.getMessage());
+		}
+		return 0;
+	}
+
+	
+	public Double howmuch(Long oid) {
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				PreparedStatement statement = connection.prepareStatement("SELECT value from item where itemID = ?");) {
+			statement.setLong(1, oid);
+			try (ResultSet resultSet = statement.executeQuery();) {
+				resultSet.next();
+				return resultSet.getDouble("value");
+			}
+		} catch (Exception e) {
+			LOGGER.debug(e);
+			LOGGER.error(e.getMessage());
+		}
+		return null;
+	}
+	
+	
+}
