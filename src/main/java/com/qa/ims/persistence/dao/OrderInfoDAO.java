@@ -99,3 +99,29 @@ public class OrderInfoDAO implements Dao<OrderInfo> {
 		}
 		return null;
 	}
+
+	/**
+	 * Updates a item in the database
+	 * 
+	 * @param item - takes in a item object, the id field will be used to
+	 *                 update that item in the database
+	 * @return
+	 */
+	@Override
+	public OrderInfo update(OrderInfo orderinfo) {
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				PreparedStatement statement = connection
+						.prepareStatement("UPDATE orderinfo SET itemID = ?, orderID = ?, quantity = ? WHERE orderinfoID = ?");) {
+			statement.setLong(1, orderinfo.getI());
+			statement.setLong(2, orderinfo.getO());
+			statement.setLong(3, orderinfo.getQua());
+			statement.setLong(4, orderinfo.getOi());
+
+			statement.executeUpdate();
+			return read(orderinfo.getOi());
+		} catch (Exception e) {
+			LOGGER.debug(e);
+			LOGGER.error(e.getMessage());
+		}
+		return null;
+	}
