@@ -95,3 +95,26 @@ public class RequestDAO implements Dao<Request> {
 		}
 		return null;
 	}
+
+	/**
+	 * Updates a request in the database
+	 * 
+	 * @param request - takes in a request object, the idd field will be used to
+	 *                 update that request in the database
+	 * @return
+	 */
+	@Override
+	public Request update(Request request) {
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				PreparedStatement statement = connection
+						.prepareStatement("UPDATE request SET CustID = ? WHERE OrderID = ?");) {
+			statement.setLong(1, request.getId());
+			statement.setLong(2, request.getIdd());
+			statement.executeUpdate();
+			return read(request.getId());
+		} catch (Exception e) {
+			LOGGER.debug(e);
+			LOGGER.error(e.getMessage());
+		}
+		return null;
+	}
