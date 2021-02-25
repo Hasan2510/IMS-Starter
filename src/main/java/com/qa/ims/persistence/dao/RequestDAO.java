@@ -118,3 +118,23 @@ public class RequestDAO implements Dao<Request> {
 		}
 		return null;
 	}
+
+	/**
+	 * Deletes a request in the database
+	 * 
+	 * @param id - id of the request
+	 */
+	@Override
+	public int delete(long idd) {
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				PreparedStatement statement = connection.prepareStatement("DELETE FROM request WHERE orderID = ?");) {
+			statement.setLong(1, idd);
+			return statement.executeUpdate();
+		} catch (Exception e) {
+			LOGGER.debug(e);
+			LOGGER.error(e.getMessage());
+		}
+		return 0;
+	}
+
+}
