@@ -79,3 +79,19 @@ public class RequestDAO implements Dao<Request> {
 		}
 		return null;
 	}
+
+	@Override
+	public Request read(Long idd) {
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				PreparedStatement statement = connection.prepareStatement("SELECT * FROM request WHERE orderID = ?");) {
+			statement.setLong(1, idd);
+			try (ResultSet resultSet = statement.executeQuery();) {
+				resultSet.next();
+				return modelFromResultSet(resultSet);
+			}
+		} catch (Exception e) {
+			LOGGER.debug(e);
+			LOGGER.error(e.getMessage());
+		}
+		return null;
+	}
