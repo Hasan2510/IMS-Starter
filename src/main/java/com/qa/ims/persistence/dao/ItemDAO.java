@@ -96,3 +96,28 @@ public class ItemDAO implements Dao<Item> {
 		}
 		return null;
 	}
+	
+	/**
+	 * Updates a item in the database
+	 * 
+	 * @param item - takes in a item object, the id field will be used to
+	 *                 update that item in the database
+	 * @return
+	 */
+	@Override
+	public Item update(Item item) {
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				PreparedStatement statement = connection
+						.prepareStatement("UPDATE item SET name = ?, value = ? WHERE itemID = ?");) {
+			statement.setString(1, item.getName());
+			statement.setFloat(2, item.getValue());
+			statement.setLong(3, item.getId());
+			statement.executeUpdate();
+			return read(item.getId());
+		} catch (Exception e) {
+			LOGGER.debug(e);
+			LOGGER.error(e.getMessage());
+		}
+		return null;
+	}
+	
