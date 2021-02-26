@@ -1,13 +1,12 @@
 Coverage: 80.3
 # IMS project
 
-One Paragraph of project description goes here
+
 I attempted to complete this project using Java and I connected mySQL using a jdbc.
 The Project has the CRUD funtions.
 My IMS has a list of customers, items, request and orderinfo.
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 
 ### using the project
@@ -37,20 +36,19 @@ The ID that is selected will be removed along with all other values for that ent
 What things you need to install the software and how to install them
 
 ```
-Give examples
-```
+
 IDE - I used Eclispe
 Java - 1.8 or higher
 SQL - 5.7 or higher
+```
 
-## Running the tests
 
-Explain how to run the automated tests for this system. Break down into which tests and what they do
 
 ### Unit Tests 
 
 JUNIT tests are used to test each method that is used within my project.
 Each test case will verify if the intented outcome is equal to the actual outcome using assertEquals(param1,param2).
+```
 Example
         @Test
 	public void testCreate() {
@@ -58,16 +56,8 @@ Example
 		assertEquals(created, DAO.create(created));
 	}
 
-
-
-
-### And coding style tests
-
-Explain what these tests test and why
-
 ```
-Give an example
-```
+
 
 
 ## Built With
