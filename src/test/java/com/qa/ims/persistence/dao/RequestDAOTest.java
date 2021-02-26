@@ -23,31 +23,31 @@ public class RequestDAOTest {
 
 	@Test
 	public void testCreate() {
-		final Request created = new Request(1L);
+		final Request created = new Request(3L, 2L);
 		assertEquals(created, DAO.create(created));
 	}
 
 	@Test
 	public void testReadAll() {
 		List<Request> expected = new ArrayList<>();
-		expected.add(new Request(2L));
+		expected.add(new Request(1L, 1L));
 		assertEquals(expected, DAO.readAll());
 	}
 
 	@Test
 	public void testReadLatest() {
-		assertEquals(new Request(2L), DAO.readLatest());
+		assertEquals(new Request(1L,1L), DAO.readLatest());
 	}
 
 	@Test
 	public void testRead() {
-		final long ID = 2L;
-		assertEquals(new Request(2L, 2L), DAO.read(ID));
+		final long ID = 1L;
+		assertEquals(new Request(1L, 1L), DAO.read(ID));
 	}
 
 	@Test
 	public void testUpdate() {
-		final Request updated = new Request( 2L);
+		final Request updated = new Request(1L, 1L);
 		assertEquals(updated, DAO.update(updated));
 
 	}

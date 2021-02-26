@@ -78,11 +78,11 @@ public class OrderInfo {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((i == null) ? 0 :i.hashCode());
+		result = prime * result + ((i == null) ? 0 : i.hashCode());
 		result = prime * result + ((o == null) ? 0 : o.hashCode());
-		result = prime * result + ((qua == null) ? 0 : qua.hashCode());
 		result = prime * result + ((oi == null) ? 0 : oi.hashCode());
-		
+		result = prime * result + ((price == null) ? 0 : price.hashCode());
+		result = prime * result + ((qua == null) ? 0 : qua.hashCode());
 		return result;
 	}
 
@@ -95,25 +95,30 @@ public class OrderInfo {
 		if (getClass() != obj.getClass())
 			return false;
 		OrderInfo other = (OrderInfo) obj;
-		if (getI() == null) {
-			if (other.getI() != null)
+		if (i == null) {
+			if (other.i != null)
 				return false;
-		} else if (!getI().equals(other.getI()))
+		} else if (!i.equals(other.i))
 			return false;
 		if (o == null) {
 			if (other.o != null)
 				return false;
 		} else if (!o.equals(other.o))
 			return false;
-		if (qua == null) {
-			if (other.qua != null)
-				return false;
-		} else if (!qua.equals(other.qua))
-			return false;
 		if (oi == null) {
 			if (other.oi != null)
 				return false;
 		} else if (!oi.equals(other.oi))
+			return false;
+		if (price == null) {
+			if (other.price != null)
+				return false;
+		} else if (!price.equals(other.price))
+			return false;
+		if (qua == null) {
+			if (other.qua != null)
+				return false;
+		} else if (!qua.equals(other.qua))
 			return false;
 		return true;
 	}
