@@ -83,5 +83,4 @@ This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md
 I would like to thank jordon for his customer demo example
 i would like to thank ed for his help
 and i would like to thank my fianace for her being there when i started to stress
-* Inspiration
-* etc
+
