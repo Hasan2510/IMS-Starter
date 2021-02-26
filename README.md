@@ -1,12 +1,37 @@
-Coverage: 34%
-# Project Title
+Coverage: 80.3
+# IMS project
 
 One Paragraph of project description goes here
-
+I attempted to complete this project using Java and I connected mySQL using a jdbc.
+The Project has the CRUD funtions.
+My IMS has a list of customers, items, request and orderinfo.
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+
+### using the project
+The terminal will ask what list you would like to use. There are 5 options. Customer Item Order OrderInfo STOP
+
+For the options of customer, item, and order, there are 4 main functions the application can perform. These are as follows.
+
+CREATE: this creates a new customer, item or order, depending on the choice the user selecting in the previous menu. 
+If the user selected Item previously, 
+then the console will ask for a Item Name, Value which the user will write into the command-line and 
+Then Item is then created.
+
+READ: This will read all entries in the database for a specific table.
+The read function will show every entry on what options you chose previously.
+If item was chosen first then it would show every itemID with their respected name and value next to it. 
+
+
+UPDATE: This function will change an existing entry, 
+for example if the user selected ITEMS and then UPDATE, 
+The user will need to enter the itemID they want update, followed by the new item name
+ and new item value.
+
+DELETE: This function will ask for an ID to enter depending on what option you chose. 
+The ID that is selected will be removed along with all other values for that entry
 ### Prerequisites
 
 What things you need to install the software and how to install them
@@ -14,24 +39,9 @@ What things you need to install the software and how to install them
 ```
 Give examples
 ```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+IDE - I used Eclispe
+Java - 1.8 or higher
+SQL - 5.7 or higher
 
 ## Running the tests
 
@@ -39,18 +49,17 @@ Explain how to run the automated tests for this system. Break down into which te
 
 ### Unit Tests 
 
-Explain what these tests test, why and how to run them
+JUNIT tests are used to test each method that is used within my project.
+Each test case will verify if the intented outcome is equal to the actual outcome using assertEquals(param1,param2).
+Example
+        @Test
+	public void testCreate() {
+		final Customer created = new Customer(4L, "chris", "perrins");
+		assertEquals(created, DAO.create(created));
+	}
 
-```
-Give an example
-```
 
-### Integration Tests 
-Explain what these tests test, why and how to run them
 
-```
-Give an example
-```
 
 ### And coding style tests
 
@@ -60,9 +69,6 @@ Explain what these tests test and why
 Give an example
 ```
 
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
@@ -84,6 +90,8 @@ This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
+I would like to thank jordon for his customer demo example
+i would like to thank ed for his help
+and i would like to thank my fianace for her being there when i started to stress
 * Inspiration
 * etc
