@@ -19,7 +19,9 @@ CREATE TABLE IF NOT EXISTS `item` (
   `orderID` INT NOT NULL AUTO_INCREMENT,
   `custID` INT NOT NULL,
    PRIMARY KEY (`orderID`),
-   FOREIGN KEY (`custID`) REFERENCES customers(`custID`));
+   FOREIGN KEY (`custID`) REFERENCES customers(`custID`)
+   ON DELETE CASCADE  
+   );
    
    
    create table if not exists `orderinfo` (
@@ -28,8 +30,10 @@ CREATE TABLE IF NOT EXISTS `item` (
   `itemID` INT NOT NULL,
   `quantity` INT NOT NULL,
    PRIMARY KEY (`orderinfoID`),
-   Foreign key (`itemID`) References item(`itemID`),
-   foreign key (`orderID`) references request(`orderID`)) ;
+   Foreign key (`itemID`) References item(`itemID`)
+   ON DELETE CASCADE,
+   foreign key (`orderID`) references request(`orderID`)
+   ON DELETE CASCADE) ;
 
  
  
